@@ -37,13 +37,14 @@ public class Employee extends User {
 
 
     public Employee(){
-
+        super();
         this.skills=new LinkedHashSet<>();
         this.daysAvailable=new LinkedHashSet<>();
     }
 
 
     public Employee(long id){
+        super();
         this.setId(id);
         this.skills=new LinkedHashSet<>();
         this.daysAvailable=new LinkedHashSet<>();

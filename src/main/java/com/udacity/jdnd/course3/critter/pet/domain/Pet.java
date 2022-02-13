@@ -30,6 +30,21 @@ public class Pet {
     @Size(max=10000)
     private String notes;
 
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer owner;
+
+
+    @OneToMany(mappedBy = "pet", cascade = CascadeType.ALL)
+    private List<Schedule> scheduleList;
+
+
+
+
+
+
+    //Construct
     public Pet(long id){
         this.id=id;
     }
@@ -37,14 +52,6 @@ public class Pet {
     public  Pet(){}
 
 
-    @ManyToOne
-    @JoinColumn(name = "customer_id")
-    @Size(max=500)
-    private Customer owner;
-
-
-    @OneToMany(mappedBy = "pet", cascade = CascadeType.ALL)
-    private List<Schedule> scheduleList;
 
 
 
@@ -118,7 +125,7 @@ public class Pet {
                 ", birthDate=" + birthDate +
                 ", notes='" + notes + '\'' +
                 ", owner=" + owner +
-                ", scheduleList=" + scheduleList.stream().map(x->x.getId()).collect(Collectors.toList()) +
+                //", scheduleList=" + scheduleList.stream().map(x->x.getId()).collect(Collectors.toList()) +
                 '}';
     }
 }

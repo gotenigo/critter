@@ -2,6 +2,7 @@ package com.udacity.jdnd.course3.critter.user.domain;
 import com.udacity.jdnd.course3.critter.pet.domain.Pet;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -12,8 +13,9 @@ import java.util.Set;
 //@DiscriminatorValue("CUSTOMER")
 public class Customer extends User{
 
-    private String name;
+    @Size(max=500)
     private String phoneNumber;
+    @Size(max=10000)
     private String notes;
 
 
@@ -24,20 +26,13 @@ public class Customer extends User{
 
 
     public Customer(){
+        super();
         this.petList=new ArrayList<>();
     }
 
 
 
     //Getters & Setters
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -67,7 +62,7 @@ public class Customer extends User{
     public String toString() {
         return "Customer{" +
                 "id='" + super.getId() + '\'' +
-                "name='" + name + '\'' +
+                "name='" + this.getName() + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", notes='" + notes + '\'' +
                 ", petList=" + petList +

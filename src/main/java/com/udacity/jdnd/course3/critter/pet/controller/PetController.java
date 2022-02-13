@@ -30,6 +30,8 @@ public class PetController {
     public PetDTO savePet(@RequestBody PetDTO petDTO) {
 
         Pet pet = toPet(petDTO); // convert DTO to Pet
+        System.out.println("pet="+pet);
+
         pet= petService.savePet(pet); // save into Database
 
         return toPetDTO(pet);

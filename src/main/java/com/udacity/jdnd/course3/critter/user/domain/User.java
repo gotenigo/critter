@@ -4,8 +4,6 @@ package com.udacity.jdnd.course3.critter.user.domain;
 import View.Views;
 import com.fasterxml.jackson.annotation.JsonView;
 import org.hibernate.annotations.Nationalized;
-import com.fasterxml.jackson.annotation.JsonView;
-import org.hibernate.annotations.NaturalId;
 
 
 import javax.persistence.*;
