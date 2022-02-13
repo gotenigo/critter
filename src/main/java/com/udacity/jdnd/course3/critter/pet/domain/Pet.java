@@ -7,6 +7,7 @@ import com.udacity.jdnd.course3.critter.user.domain.Customer;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Entity
@@ -34,7 +35,7 @@ public class Pet {
     private Customer owner;
 
 
-    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "pet", cascade = CascadeType.ALL)
     private List<Schedule> scheduleList;
 
 
@@ -100,7 +101,6 @@ public class Pet {
     }
 
 
-
     @Override
     public String toString() {
         return "Pet{" +
@@ -110,6 +110,7 @@ public class Pet {
                 ", birthDate=" + birthDate +
                 ", notes='" + notes + '\'' +
                 ", owner=" + owner +
+                ", scheduleList=" + scheduleList.stream().map(x->x.getId()).collect(Collectors.toList()) +
                 '}';
     }
 }

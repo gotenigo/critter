@@ -6,15 +6,12 @@ import com.udacity.jdnd.course3.critter.user.domain.EmployeeSkill;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 
 
-//@Embeddable
+@Embeddable
 public class SchedulePK2 implements Serializable {
 
-
-    //@Temporal(javax.persistence.TemporalType.DATE)
-    @Column(name = "date_id")
-    private Long dateId;
 
     //employee
     @Column(name = "employee_id")
@@ -24,21 +21,19 @@ public class SchedulePK2 implements Serializable {
     @Column(name = "pet_id")
     private Long  petId;
 
+    @Column(name = "localDate")
+    private LocalDate date;
+
 
     public SchedulePK2(){}
 
-    public SchedulePK2(Long date, Long employeeId, Long petId) {
-        this.dateId = date;
+    public SchedulePK2(LocalDate date) {
+        this.date = date;
+    }
+
+    public SchedulePK2(Long employeeId, Long petId) {
         this.employeeId = employeeId;
         this.petId = petId;
-    }
-
-    public Long getDate() {
-        return dateId;
-    }
-
-    public void setDate(Long date) {
-        this.dateId = date;
     }
 
     public Long getEmployeeId() {
@@ -58,6 +53,13 @@ public class SchedulePK2 implements Serializable {
     }
 
 
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
 
 
 
@@ -69,19 +71,16 @@ public class SchedulePK2 implements Serializable {
 
         SchedulePK2 that = (SchedulePK2) o;
 
-        if (!getDate().equals(that.getDate())) return false;
         if (!getEmployeeId().equals(that.getEmployeeId())) return false;
-        return getPetId().equals(that.getPetId());
+        if (!getPetId().equals(that.getPetId())) return false;
+        return getDate().equals(that.getDate());
     }
 
     @Override
     public int hashCode() {
-        int result = getDate().hashCode();
-        result = 31 * result + getEmployeeId().hashCode();
+        int result = getEmployeeId().hashCode();
         result = 31 * result + getPetId().hashCode();
+        result = 31 * result + getDate().hashCode();
         return result;
     }
-
-
-
 }

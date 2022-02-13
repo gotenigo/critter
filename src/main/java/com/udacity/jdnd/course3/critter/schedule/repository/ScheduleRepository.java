@@ -18,13 +18,16 @@ import java.util.List;
 public interface ScheduleRepository extends JpaRepository<Schedule, Long> {
 
 
+    @Query("SELECT sc FROM Schedule sc WHERE sc.id.date IN (select sc2.id.date from Schedule sc2 where sc2.pet.id=:petId)")
     List<Schedule> findScheduleByPet_Id(long petId);
 
-    //@Query("SELECT sc.employee,sc.pet,sc.date,sc.activities FROM Schedule sc WHERE sc.employee.id = :employeeId GROUP BY sc.date")
-     List<Schedule> findScheduleByEmployee_Id(long employeeId);
 
 
-    @Query("SELECT sc FROM Schedule sc WHERE sc.pet.owner.id = :customerId")
+    @Query("SELECT sc FROM Schedule sc WHERE sc.id.date IN (select sc2.id.date from Schedule sc2 where sc2.employee.id=:employeeId)")
+    List<Schedule> findScheduleByByEmployee(long employeeId);
+
+
+    @Query("SELECT sc FROM Schedule sc WHERE sc.id.date IN (select sc2.id.date from Schedule sc2 where sc2.pet.owner.id=:customerId)")
     List<Schedule> getScheduleForCustomer(long customerId);
 
 

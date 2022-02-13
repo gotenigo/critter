@@ -252,9 +252,6 @@ public class CritterFunctionalTest {
 
         //Employee 2 is only in schedule 2
         List<ScheduleDTO> scheds2e = scheduleController.getScheduleForEmployee(sched2.getEmployeeIds().get(0));
-        System.out.println("scheds2e ### LIST DTO ####="+scheds2e);
-        System.out.println("sched2="+sched2);
-        System.out.println("sched2.getEmployeeIds().get(0)="+sched2.getEmployeeIds().get(0));
         compareSchedules(sched2, scheds2e.get(0));
 
         //Pet 1 is only in schedule 1
@@ -344,15 +341,11 @@ public class CritterFunctionalTest {
 
     private static void compareSchedules(ScheduleDTO sched1, ScheduleDTO sched2) {
 
-        System.out.println("=======>1");
         Assertions.assertEquals(sched1.getPetIds(), sched2.getPetIds());
-        System.out.println("=======>2");
         Assertions.assertEquals(sched1.getActivities(), sched2.getActivities());
-        System.out.println("=======>3");
         Assertions.assertEquals(sched1.getEmployeeIds(), sched2.getEmployeeIds());
-        System.out.println("=======>4");
         Assertions.assertEquals(sched1.getDate(), sched2.getDate());
-        System.out.println("=======>5");
+
     }
 
 }

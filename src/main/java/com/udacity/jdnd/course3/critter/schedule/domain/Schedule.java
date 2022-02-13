@@ -11,19 +11,20 @@ import java.util.Set;
 
 
 @Entity
-@Table(name = "SCHEDULE", uniqueConstraints={@UniqueConstraint(columnNames = {"localDate" , "employee_id", "pet_id"})})
+//@Table(name = "SCHEDULE", uniqueConstraints={@UniqueConstraint(columnNames = {"localDate" , "employee_id", "pet_id"})})
+@Table(name = "SCHEDULE")
 public class Schedule  {
 
 
-    @Id
-    @GeneratedValue
-    private Long id;
+    @EmbeddedId
+    private SchedulePK2 id;
 
 
     //employee
     //@NotNull
     @ManyToOne(fetch = FetchType.EAGER )
     @JoinColumn(name = "employee_id")
+    @MapsId("employeeId")
     private Employee employee;
 
 
@@ -31,13 +32,8 @@ public class Schedule  {
     //@NotNull
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "pet_id")
+    @MapsId("petId")
     private Pet pet;
-
-
-
-    //Date
-    @Column(name = "localDate")
-    private LocalDate date;
 
 
 
@@ -51,25 +47,28 @@ public class Schedule  {
 
     public Schedule(Employee employee, LocalDate date, Set<EmployeeSkill> activities) {
         this.employee = employee;
-        this.date = date;
+        this.id= new SchedulePK2(date);
         this.activities = activities;
     }
 
 
     public Schedule(Pet pet, LocalDate date, Set<EmployeeSkill> activities) {
         this.pet = pet;
-        this.date = date;
+        this.id= new SchedulePK2(date);
         this.activities = activities;
+
     }
 
 
     public Schedule(){
+        this.id = new SchedulePK2();
     }
 
 
 
     public Schedule(LocalDate date, Set<EmployeeSkill> activities, Pet pet, Employee employee) {
-        this.date=date;
+        System.out.println("=======>Trying to create a schedulewith date ="+date);
+        this.id= new SchedulePK2(date);
         this.activities=activities;
         this.pet=pet;
         this.employee=employee;
@@ -79,11 +78,11 @@ public class Schedule  {
 
 
     public LocalDate getDate() {
-        return date;
+        return this.id.getDate();
     }
 
     public void setDate(LocalDate date) {
-        this.date = date;
+        this.id.setDate(date);
     }
 
     public Employee getEmployee() {
@@ -102,10 +101,6 @@ public class Schedule  {
         this.pet = pet;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public Set<EmployeeSkill> getActivities() {
         return activities;
     }
@@ -114,8 +109,13 @@ public class Schedule  {
         this.activities = activities;
     }
 
-    public Long getId() {
+
+    public SchedulePK2 getId() {
         return id;
+    }
+
+    public void setId(SchedulePK2 id) {
+        this.id = id;
     }
 
 
@@ -148,7 +148,7 @@ public class Schedule  {
                 "id=" + id +
                 ", employee=" + employee.getId() +
                 ", pet=" + pet.getId() +
-                ", date=" + date +
+                ", date=" + this.id.getDate() +
                 ", activities=" + activities +
                 '}';
     }

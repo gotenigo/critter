@@ -7,6 +7,7 @@ import java.time.DayOfWeek;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 
 @Entity
@@ -87,7 +88,7 @@ public class Employee extends User {
                 "id=" + super.getId() +
                 ",skills=" + skills +
                 ", daysAvailable=" + daysAvailable +
-                //", scheduleList=" + scheduleList +
+                ", scheduleList=" + scheduleList.stream().map(x->x.getId()).collect(Collectors.toList()) +
                 '}';
     }
 
