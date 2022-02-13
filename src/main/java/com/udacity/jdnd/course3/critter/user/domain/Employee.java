@@ -31,7 +31,7 @@ public class Employee extends User {
 
 
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
-    private List<Schedule> scheduleList;
+    private Set<Schedule> scheduleList;
 
 
 
@@ -73,11 +73,11 @@ public class Employee extends User {
     }
 
 
-    public List<Schedule> getScheduleList() {
+    public Set<Schedule> getScheduleList() {
         return scheduleList;
     }
 
-    public void setScheduleList(List<Schedule> scheduleList) {
+    public void setScheduleList(Set<Schedule> scheduleList) {
         this.scheduleList = scheduleList;
     }
 

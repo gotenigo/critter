@@ -1,15 +1,14 @@
 package com.udacity.jdnd.course3.critter.pet.domain;
 
-
 import com.udacity.jdnd.course3.critter.schedule.domain.Schedule;
 import com.udacity.jdnd.course3.critter.user.domain.Customer;
-import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Set;
+
 
 
 @Entity
@@ -37,7 +36,7 @@ public class Pet {
 
 
     @OneToMany(mappedBy = "pet", cascade = CascadeType.ALL)
-    private List<Schedule> scheduleList;
+    private Set<Schedule> scheduleList;
 
 
 
@@ -107,11 +106,11 @@ public class Pet {
     }
 
 
-    public List<Schedule> getScheduleList() {
+    public Set<Schedule> getScheduleList() {
         return scheduleList;
     }
 
-    public void setScheduleList(List<Schedule> scheduleList) {
+    public void setScheduleList(Set<Schedule> scheduleList) {
         this.scheduleList = scheduleList;
     }
 
