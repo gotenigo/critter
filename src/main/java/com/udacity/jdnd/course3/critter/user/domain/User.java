@@ -9,7 +9,7 @@ import org.hibernate.annotations.NaturalId;
 
 
 import javax.persistence.*;
-
+import javax.validation.constraints.Size;
 
 
 //@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -26,7 +26,7 @@ public class User {
 
     @JsonView(Views.Public.class)
     @Nationalized // should use @Nationalized instead of @Type=nstring
-    //@NaturalId
+    @Size(max=500)
     private String name;
 
 

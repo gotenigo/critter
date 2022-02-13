@@ -3,8 +3,10 @@ package com.udacity.jdnd.course3.critter.pet.domain;
 
 import com.udacity.jdnd.course3.critter.schedule.domain.Schedule;
 import com.udacity.jdnd.course3.critter.user.domain.Customer;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,8 +21,13 @@ public class Pet {
     private long id;
 
     private PetType type;
+
+    @Size(max=500)
     private String name;
+
     private LocalDate birthDate;
+
+    @Size(max=10000)
     private String notes;
 
     public Pet(long id){
@@ -32,6 +39,7 @@ public class Pet {
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
+    @Size(max=500)
     private Customer owner;
 
 

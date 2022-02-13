@@ -37,6 +37,7 @@ public class Employee extends User {
 
 
     public Employee(){
+
         this.skills=new LinkedHashSet<>();
         this.daysAvailable=new LinkedHashSet<>();
     }
