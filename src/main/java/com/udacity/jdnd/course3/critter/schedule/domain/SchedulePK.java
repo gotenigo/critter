@@ -1,44 +1,52 @@
 package com.udacity.jdnd.course3.critter.schedule.domain;
 
-import com.udacity.jdnd.course3.critter.pet.domain.Pet;
-import com.udacity.jdnd.course3.critter.user.domain.Employee;
-import com.udacity.jdnd.course3.critter.user.domain.EmployeeSkill;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 
 import javax.persistence.*;
-import javax.sql.DataSource;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
 
 
-//@Embeddable
+@Embeddable
 public class SchedulePK implements Serializable {
 
-    // create your own serialVersionUID from your IDE if it asks
-    private static final long serialVersionUID = 6202269445639364170L;
-
-
-    @NotNull
-    @Column(name = "date")
-    private LocalDate date;
 
     //employee
-    @NotNull
-    @Column(name = "activity")
-    @Enumerated(EnumType.STRING)
-    private EmployeeSkill  activity;
+    @Column(name = "employee_id")
+    private Long  employeeId;
+
+    //pet
+    @Column(name = "pet_id")
+    private Long  petId;
+
+    @Column(name = "localDate")
+    private LocalDate date;
+
+
 
 
     public SchedulePK(){}
 
-    public SchedulePK(LocalDate date, EmployeeSkill activitiesId) {
+    public SchedulePK(LocalDate date) {
         this.date = date;
-        this.activity = activitiesId;
+    }
+
+
+
+    //Getters and Setters
+    public Long getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(Long employeeId) {
+        this.employeeId = employeeId;
+    }
+
+    public Long getPetId() {
+        return petId;
+    }
+
+    public void setPetId(Long petId) {
+        this.petId = petId;
     }
 
 
@@ -50,13 +58,9 @@ public class SchedulePK implements Serializable {
         this.date = date;
     }
 
-    public EmployeeSkill getActivity() {
-        return activity;
-    }
 
-    public void setActivity(EmployeeSkill activity) {
-        this.activity = activity;
-    }
+
+
 
 
     @Override
@@ -66,22 +70,20 @@ public class SchedulePK implements Serializable {
 
         SchedulePK that = (SchedulePK) o;
 
-        if (!getDate().equals(that.getDate())) return false;
-        return getActivity().equals(that.getActivity());
+        if (!getEmployeeId().equals(that.getEmployeeId())) return false;
+        if (!getPetId().equals(that.getPetId())) return false;
+        return getDate().equals(that.getDate());
     }
 
     @Override
     public int hashCode() {
-        int result = getDate().hashCode();
-        result = 31 * result + getActivity().hashCode();
+        int result = getEmployeeId().hashCode();
+        result = 31 * result + getPetId().hashCode();
+        result = 31 * result + getDate().hashCode();
         return result;
     }
 
-    @Override
-    public String toString() {
-        return "SchedulePK{" +
-                "date=" + date +
-                ", activity='" + activity + '\'' +
-                '}';
-    }
+
+
+
 }

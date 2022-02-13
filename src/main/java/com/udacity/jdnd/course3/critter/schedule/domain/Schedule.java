@@ -5,31 +5,30 @@ import com.udacity.jdnd.course3.critter.user.domain.Employee;
 import com.udacity.jdnd.course3.critter.user.domain.EmployeeSkill;
 import javax.persistence.Entity;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.util.LinkedHashSet;
 import java.util.Set;
 
 
 @Entity
-//@Table(name = "SCHEDULE", uniqueConstraints={@UniqueConstraint(columnNames = {"localDate" , "employee_id", "pet_id"})})
 @Table(name = "SCHEDULE")
 public class Schedule  {
 
 
     @EmbeddedId
-    private SchedulePK2 id;
+    private SchedulePK id;
 
 
-    //employee
-    //@NotNull
+    //Employee
+    @NotNull
     @ManyToOne(fetch = FetchType.EAGER )
     @JoinColumn(name = "employee_id")
     @MapsId("employeeId")
     private Employee employee;
 
 
-    //pet
-    //@NotNull
+    //Pet
+    @NotNull
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "pet_id")
     @MapsId("petId")
@@ -37,38 +36,24 @@ public class Schedule  {
 
 
 
-    //skills
+    //Skills
     @Column(name = "activity")
-    //@NotNull
+    @NotNull
     @ElementCollection(targetClass = EmployeeSkill.class,fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     private Set<EmployeeSkill> activities;
 
 
-    public Schedule(Employee employee, LocalDate date, Set<EmployeeSkill> activities) {
-        this.employee = employee;
-        this.id= new SchedulePK2(date);
-        this.activities = activities;
-    }
-
-
-    public Schedule(Pet pet, LocalDate date, Set<EmployeeSkill> activities) {
-        this.pet = pet;
-        this.id= new SchedulePK2(date);
-        this.activities = activities;
-
-    }
 
 
     public Schedule(){
-        this.id = new SchedulePK2();
+        this.id = new SchedulePK();
     }
 
 
-
     public Schedule(LocalDate date, Set<EmployeeSkill> activities, Pet pet, Employee employee) {
-        System.out.println("=======>Trying to create a schedulewith date ="+date);
-        this.id= new SchedulePK2(date);
+
+        this.id= new SchedulePK(date);
         this.activities=activities;
         this.pet=pet;
         this.employee=employee;
@@ -76,7 +61,7 @@ public class Schedule  {
 
 
 
-
+    //Getters and Setters
     public LocalDate getDate() {
         return this.id.getDate();
     }
@@ -110,13 +95,16 @@ public class Schedule  {
     }
 
 
-    public SchedulePK2 getId() {
+    public SchedulePK getId() {
         return id;
     }
 
-    public void setId(SchedulePK2 id) {
+    public void setId(SchedulePK id) {
         this.id = id;
     }
+
+
+
 
 
     @Override
@@ -152,6 +140,9 @@ public class Schedule  {
                 ", activities=" + activities +
                 '}';
     }
+
+
+
 
 
 
