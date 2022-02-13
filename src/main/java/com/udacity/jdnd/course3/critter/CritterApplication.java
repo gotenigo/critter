@@ -9,14 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * This Spring Boot project will allow users to create pets, owners, and employees,
  * and then schedule events for employees to provide services for pets.
  *
- * User can :
- * 1) to create pets (Admin or Cutomer ?? )
- * 2) to create Pet owners  (Admin or customer ??)
- * 3) to create employees  (for Admin)
- * 4) to schedule events for employees to provide services for pets
- *
- *
- * ======The project should now support the following workflow:=====
+ * ======The project should  support the following workflow:=====
  *
  * 1) Create a new customer.
  * 2) Create a pet for that customer.
