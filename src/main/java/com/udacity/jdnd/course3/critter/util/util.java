@@ -238,8 +238,8 @@ public class util {
             //set employeeId + petId
             employeeIds.add(e.getEmployee().getId());
             petIds.add(e.getPet().getId());
-            System.out.println("*****TEST******* ="+e.getEmployee().getScheduleList());
-            System.out.println("*****TEST******* ="+e.getPet().getScheduleList());
+            //System.out.println("*****TEST******* ="+e.getEmployee().getScheduleList());
+            //System.out.println("*****TEST******* ="+e.getPet().getScheduleList());
         }
 
         scheduleDTO.setEmployeeIds(new ArrayList<>(employeeIds));

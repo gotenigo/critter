@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f4c809aa-0a72-4bf2-a010-a6fb0d582997" name="Changes" comment="" />
+    <list default="true" id="f4c809aa-0a72-4bf2-a010-a6fb0d582997" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/util/util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/util/util.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,6 +23,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -50,6 +55,7 @@
     <option name="version" value="2" />
   </component>
   <component name="ProjectId" id="24i1EcdqHRU4dxmVQgziLD14jgm" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -306,12 +312,23 @@
       <workItem from="1644406073380" duration="26000" />
       <workItem from="1644406114372" duration="47360000" />
       <workItem from="1644488970647" duration="92451000" />
-      <workItem from="1644663255545" duration="56582000" />
+      <workItem from="1644663255545" duration="57103000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
