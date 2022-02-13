@@ -22,8 +22,8 @@ public class User {
     private Long id;
 
 
-    @JsonView(Views.Public.class)
-    @Nationalized // should use @Nationalized instead of @Type=nstring
+    //@JsonView(Views.Public.class)
+    //@Nationalized // should use @Nationalized instead of @Type=nstring
     @Size(max=500)
     private String name;
 
