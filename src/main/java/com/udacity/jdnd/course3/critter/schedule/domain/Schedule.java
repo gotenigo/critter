@@ -114,20 +114,16 @@ public class Schedule  {
 
         Schedule schedule = (Schedule) o;
 
-        if (!getEmployee().equals(schedule.getEmployee())) return false;
-        if (!getPet().equals(schedule.getPet())) return false;
-        if (!getDate().equals(schedule.getDate())) return false;
-        return getActivities().equals(schedule.getActivities());
+        return getId().equals(schedule.getId());
     }
 
     @Override
     public int hashCode() {
-        int result = getEmployee().hashCode();
-        result = 31 * result + getPet().hashCode();
-        result = 31 * result + getDate().hashCode();
-        result = 31 * result + getActivities().hashCode();
-        return result;
+        return getId().hashCode();
     }
+
+
+
 
 
     @Override
