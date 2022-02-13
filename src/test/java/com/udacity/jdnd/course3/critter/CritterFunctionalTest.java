@@ -80,7 +80,7 @@ public class CritterFunctionalTest {
         Assertions.assertTrue(retrievedEmployee.getId() > 0);
     }
 
-    //https://stackoverflow.com/questions/57767530/join-fetch-query-not-fetching-lazy-collection-in-spring-datajpatest
+
     @Test
     public void testAddPetsToCustomer() throws InterruptedException {
         CustomerDTO customerDTO = createCustomerDTO();
@@ -141,7 +141,6 @@ public class CritterFunctionalTest {
     @Test
     public void testChangeEmployeeAvailability() {
         EmployeeDTO employeeDTO = createEmployeeDTO();
-        System.out.println("===>employeeDTO="+employeeDTO);
         EmployeeDTO emp1 = userController.saveEmployee(employeeDTO);
         Assertions.assertNull(emp1.getDaysAvailable());
 
