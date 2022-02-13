@@ -62,8 +62,7 @@ public class CritterFunctionalTest {
     public void testCreateCustomer(){
         CustomerDTO customerDTO = createCustomerDTO();
         CustomerDTO newCustomer = userController.saveCustomer(customerDTO);
-        System.out.println("newCustomer="+newCustomer);
-        System.out.println("userController.getAllCustomers()="+userController.getAllCustomers());
+
 
         CustomerDTO retrievedCustomer = userController.getAllCustomers().get(0);
         Assertions.assertEquals(newCustomer.getName(), customerDTO.getName());

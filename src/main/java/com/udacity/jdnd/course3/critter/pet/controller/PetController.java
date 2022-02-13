@@ -7,12 +7,10 @@ import com.udacity.jdnd.course3.critter.user.domain.Customer;
 import com.udacity.jdnd.course3.critter.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import static com.udacity.jdnd.course3.critter.util.util.toPet;
-import static com.udacity.jdnd.course3.critter.util.util.toPetDTO;
-
 import java.util.List;
 import java.util.stream.Collectors;
+import static com.udacity.jdnd.course3.critter.util.util.copyProperties;
+
 
 /**
  * Handles web requests related to Pets.
@@ -70,6 +68,57 @@ public class PetController {
                 .map(x->toPetDTO(x))
                 .collect(Collectors.toList());
     }
+
+
+
+
+
+
+
+    /***
+     *
+     * @param pet
+     * @return
+     */
+    private static PetDTO toPetDTO(Pet pet){
+
+        if (pet==null  || pet.getOwner()==null){
+            return new PetDTO() ;
+        }
+
+        PetDTO petdto = copyProperties(pet, new PetDTO());
+        petdto.setOwnerId(pet.getOwner().getId());
+
+        return petdto;
+    }
+
+
+
+
+
+    /***
+     *
+     * @param petDTO
+     * @return
+     */
+    private static  Pet toPet(PetDTO petDTO){
+
+        if (petDTO==null  ){
+            return new Pet() ;
+        }
+
+        Customer customer = new Customer();
+        customer.setId(petDTO.getOwnerId()); //!! Set the Pet ownership as they have ONE-TO-MANY relationship
+
+        Pet pet = copyProperties(petDTO, new Pet());
+        pet.setOwner(customer);
+
+        return pet;
+    }
+
+
+
+
 
 
 

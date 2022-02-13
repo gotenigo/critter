@@ -19,7 +19,7 @@ public class EmployeeDTO {
     public EmployeeDTO(){
 
         this.skills=new LinkedHashSet<>();
-        //this.daysAvailable=new LinkedHashSet<>();
+        //this.daysAvailable=new LinkedHashSet<>(); // we test against null , so we dont want that init
     }
 
     public long getId() {

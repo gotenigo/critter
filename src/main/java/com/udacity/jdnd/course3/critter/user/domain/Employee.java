@@ -21,6 +21,7 @@ public class Employee extends User {
     @Enumerated(EnumType.STRING)
     private Set<EmployeeSkill> skills;
 
+
     // Employee works from Mon...Sun
     //availability : Mon, Tues, Wed, Thur, Fri, Sat, Sun
     @ElementCollection(fetch = FetchType.EAGER)
@@ -88,7 +89,7 @@ public class Employee extends User {
                 "id=" + super.getId() +
                 ",skills=" + skills +
                 ", daysAvailable=" + daysAvailable +
-                ", scheduleList=" + scheduleList.stream().map(x->x.getId()).collect(Collectors.toList()) +
+                //", scheduleList=" + scheduleList.stream().map(x->x.getId()).collect(Collectors.toList()) +
                 '}';
     }
 

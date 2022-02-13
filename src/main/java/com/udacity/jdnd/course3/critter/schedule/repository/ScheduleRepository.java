@@ -24,7 +24,7 @@ public interface ScheduleRepository extends JpaRepository<Schedule, Long> {
 
 
     @Query("SELECT sc FROM Schedule sc WHERE sc.id.date IN (select sc2.id.date from Schedule sc2 where sc2.employee.id=:employeeId)")
-    List<Schedule> findScheduleByByEmployee(long employeeId);
+    List<Schedule> findScheduleByEmployee_Id(long employeeId);
 
 
     @Query("SELECT sc FROM Schedule sc WHERE sc.id.date IN (select sc2.id.date from Schedule sc2 where sc2.pet.owner.id=:customerId)")
