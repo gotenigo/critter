@@ -2,21 +2,16 @@ package com.udacity.jdnd.course3.critter.pet.service;
 
 
 import com.udacity.jdnd.course3.critter.pet.domain.Pet;
-import com.udacity.jdnd.course3.critter.pet.domain.PetDTO;
 import com.udacity.jdnd.course3.critter.pet.repository.PetRepository;
-import com.udacity.jdnd.course3.critter.user.domain.Customer;
-import com.udacity.jdnd.course3.critter.user.domain.Employee;
-import com.udacity.jdnd.course3.critter.user.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 
-
-// !!!! The Service layer should work with Entities or primitives, but not DTOs. !!!!
+@Transactional
 @Service
 public class PetService {
 

@@ -1,30 +1,18 @@
 package com.udacity.jdnd.course3.critter.user.service;
 
 
-import com.udacity.jdnd.course3.critter.pet.domain.Pet;
 import com.udacity.jdnd.course3.critter.user.domain.*;
 import com.udacity.jdnd.course3.critter.user.repository.CustomerRepository;
 import com.udacity.jdnd.course3.critter.user.repository.EmployeeRepository;
-import com.udacity.jdnd.course3.critter.user.repository.UserRepository;
-import com.udacity.jdnd.course3.critter.user.repository.UserRepositoryEntityManager;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.SerializationUtils;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.criteria.*;
 import java.time.DayOfWeek;
-import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
 
+@Transactional
 @Service
 public class UserService {
 
