@@ -2,6 +2,7 @@ package com.udacity.jdnd.course3.critter.pet.domain;
 
 import com.udacity.jdnd.course3.critter.schedule.domain.Schedule;
 import com.udacity.jdnd.course3.critter.user.domain.Customer;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -13,6 +14,9 @@ import java.util.Set;
 
 @Entity
 @Table(name = "PET")
+/*@org.hibernate.annotations.Cache(
+        usage = CacheConcurrencyStrategy.READ_WRITE
+)*/
 public class Pet {
 
     @Id

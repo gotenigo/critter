@@ -14,6 +14,7 @@ import java.util.List;
 @Service
 public class ScheduleService {
 
+
     @Autowired
     ScheduleRepository scheduleRepository;
 
@@ -46,8 +47,6 @@ public class ScheduleService {
     public List<Schedule> getScheduleForCustomer(long customerId) {
         return scheduleRepository.getScheduleForCustomer(customerId);
     }
-
-
 
 
 
