@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.Set;
 
 
+/*@org.hibernate.annotations.Cache(
+        usage = CacheConcurrencyStrategy.READ_WRITE
+)*/
 @Entity
 @Table(name ="CUSTOMER")
 //@DiscriminatorValue("CUSTOMER")

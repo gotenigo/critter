@@ -10,6 +10,11 @@ import java.time.LocalDate;
 import java.util.Set;
 
 
+
+
+/*@org.hibernate.annotations.Cache(
+        usage = CacheConcurrencyStrategy.READ_WRITE
+)*/
 @Entity
 @Table(name = "SCHEDULE")
 public class Schedule  {

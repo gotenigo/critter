@@ -12,11 +12,11 @@ import java.util.Set;
 
 
 
-@Entity
-@Table(name = "PET")
 /*@org.hibernate.annotations.Cache(
         usage = CacheConcurrencyStrategy.READ_WRITE
 )*/
+@Entity
+@Table(name = "PET")
 public class Pet {
 
     @Id
